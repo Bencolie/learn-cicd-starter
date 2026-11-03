@@ -33,5 +33,5 @@ jobs:
         with:
           go-version: "1.27.1"
 
-      -name: Chcek code formatting
-       run: test -z $(go fmt ./...)
+      - name: Chcek code formatting
+        run: test -z $(go fmt ./...)
