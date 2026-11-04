@@ -7,6 +7,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+        // fix the gosec secure error
+        "strconv"
+        "time"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -91,9 +94,9 @@ func main() {
 	srv := &http.Server{
 		Addr:              ":" + port,
 		Handler:           router,
-		ReadHeaderTimeout: 5,
+		ReadHeaderTimeout: time.Second * 5,
 	}
 
-	log.Printf("Serving\n")
+	log.Printf("Serving on port: %s", strconv.Quote(port))
 	log.Fatal(srv.ListenAndServe())
 }
